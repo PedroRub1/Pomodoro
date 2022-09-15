@@ -9,7 +9,7 @@ let setBtn = document.querySelector('#setBtn');
 let timeIn = document.querySelector('#time');
 let timerDisplay  = document.querySelector('#timer');
 
-let timer;
+var timer;
 
 let min = 0;
 let sec = 0;
