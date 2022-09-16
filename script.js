@@ -49,10 +49,10 @@ function getTime() {
 };
 
 function startTimer() {
-    if (time > 0 && !startedTimer) {
+    if (time > 0 && startedTimer == false) {
         timer = setInterval(() => {
-            time--;
             startedTimer = true;
+            time--;
             displayTimer(time)
             if (time == 0) {
             audio1.play();
@@ -63,14 +63,16 @@ function startTimer() {
 }
 
 function pauseTimer() {
+    startTimer = false;
     clearInterval(timer)
     displayTimer(time)
 }
 
 function reset() {
+    startedTimer = false;
+    time = storageTime;
     audio1.load();
     clearInterval(timer);
-    time = storageTime;
     displayTimer(time);
 }
 
