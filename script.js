@@ -1,7 +1,7 @@
 const audio1 = new Audio('./sounds/audio1.mp3');
 audio1.loop = 1;
 
-let playBtn = document.querySelector('#playBtn');
+let startBtn = document.querySelector('#startBtn');
 let pauseBtn = document.querySelector('#pauseBtn');
 let resetBtn = document.querySelector('#resetBtn');
 
@@ -76,7 +76,7 @@ function reset() {
 
 window.onload = () => {
     setBtn.onclick = getTime;
-    playBtn.onclick = decreseTime;
+    startBtn.onclick = decreseTime;
     pauseBtn.onclick = pauseTimer;
     resetBtn.onclick = reset;
 
