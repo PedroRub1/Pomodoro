@@ -15,6 +15,7 @@ let min = 0;
 let sec = 0;
 let time = 0;
 let storageTime;
+let startedTimer = false;
 
 sec = formatSec(sec);
 min = formatMin(min);
@@ -47,13 +48,12 @@ function getTime() {
     timeIn.value = 0;
 };
 
-function decreseTime() {
-    if (time > 0) {
+function startTimer() {
+    if (time > 0 && !startedTimer) {
         timer = setInterval(() => {
             time--;
-
+            startedTimer = true;
             displayTimer(time)
-
             if (time == 0) {
             audio1.play();
             clearInterval(timer);
@@ -76,7 +76,7 @@ function reset() {
 
 window.onload = () => {
     setBtn.onclick = getTime;
-    startBtn.onclick = decreseTime;
+    startBtn.onclick = startTimer;
     pauseBtn.onclick = pauseTimer;
     resetBtn.onclick = reset;
 
