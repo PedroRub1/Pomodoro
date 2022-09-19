@@ -61,3 +61,15 @@ button {
     width: 190px;
     height: 25px;
 }
+
+.audio-set p{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+#audioSlider {
+    width: 190px;
+    height: 25px;
+}
+

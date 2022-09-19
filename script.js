@@ -1,6 +1,3 @@
-const audio1 = new Audio('./sounds/audio1.mp3');
-audio1.loop = 1;
-
 let startBtn = document.querySelector('#startBtn');
 let pauseBtn = document.querySelector('#pauseBtn');
 let resetBtn = document.querySelector('#resetBtn');
@@ -12,8 +9,16 @@ let timerDisplay  = document.querySelector('#timer');
 let volumeIn = document.querySelector('#volumeSlider');
 volumeIn.value = 5
 let volumeDisplay = document.querySelector('#volumeDisplay');
-
 let volume = parseInt(volumeIn.value);
+
+let audioIn = document.querySelector('#audioSlider')
+audioIn.value = 1
+let audioChoice = document.querySelector('#audioChoiceDisplay');
+let selectAudio = parseInt(audioIn.value)
+
+var audio = new Audio(`./sounds/audio${selectAudio}.mp3`);
+audio.loop = 1;
+
 var timer;
 
 let min = 0;
@@ -60,7 +65,7 @@ function startTimer() {
             time--; 
             displayTimer(time)
             if (time == 0) {
-            audio1.play();
+            audio.play();
             clearInterval(timer);
             }
         }, 1000)
@@ -76,7 +81,7 @@ function pauseTimer() {
 function reset() {
     startedTimer = false;
     time = storageTime;
-    audio1.load();
+    audio.load();
     clearInterval(timer);
     displayTimer(time);
 }
@@ -87,8 +92,19 @@ function displayVolume() {
 
 function updateVolume() {
     volume = this.value;
-    audio1.volume = volume / 10;
+    audio.volume = volume / 10;
     displayVolume()
+}
+
+function displayAudioChoice() {
+    audioChoice.innerHTML = 'Audio:' + selectAudio
+}
+
+function updateAudio() {
+    selectAudio = this.value;
+    audio = new Audio(`./sounds/audio${selectAudio}.mp3`)
+    audio.loop = 1;
+    displayAudioChoice()
 }
 
 window.onload = () => {
@@ -97,7 +113,9 @@ window.onload = () => {
     pauseBtn.onclick = pauseTimer;
     resetBtn.onclick = reset;
     volumeIn.oninput = updateVolume;
+    audioIn.oninput = updateAudio;
 
     displayTimer(time);
     displayVolume();
+    displayAudioChoice();
 }
