@@ -52,7 +52,7 @@ function startTimer() {
     if (time > 0 && startedTimer == false) {
         timer = setInterval(() => {
             startedTimer = true;
-            time--;
+            time--; 
             displayTimer(time)
             if (time == 0) {
             audio1.play();
