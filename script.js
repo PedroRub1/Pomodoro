@@ -9,6 +9,11 @@ let setBtn = document.querySelector('#setBtn');
 let timeIn = document.querySelector('#time');
 let timerDisplay  = document.querySelector('#timer');
 
+let volumeIn = document.querySelector('#volumeSlider');
+volumeIn.value = 5
+let volumeDisplay = document.querySelector('#volumeDisplay');
+
+let volume = parseInt(volumeIn.value);
 var timer;
 
 let min = 0;
@@ -76,11 +81,23 @@ function reset() {
     displayTimer(time);
 }
 
+function displayVolume() {
+    volumeDisplay.innerHTML = 'Volume: ' + volume;
+}
+
+function updateVolume() {
+    volume = this.value;
+    audio1.volume = volume / 10;
+    displayVolume()
+}
+
 window.onload = () => {
     setBtn.onclick = getTime;
     startBtn.onclick = startTimer;
     pauseBtn.onclick = pauseTimer;
     resetBtn.onclick = reset;
+    volumeIn.oninput = updateVolume;
 
     displayTimer(time);
+    displayVolume();
 }
