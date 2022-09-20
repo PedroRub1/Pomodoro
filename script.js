@@ -50,13 +50,15 @@ function displayTimer(time) {
 };
 
 function getTime() {
-    time = timeIn.value * 60;
-    storageTime = timeIn.value * 60;
-
-    displayTimer(time);
-    pauseTimer()
+    if (timeIn.value >= 0) {
+        time = timeIn.value * 60;
+        storageTime = timeIn.value * 60;
     
-    timeIn.value = 0;
+        displayTimer(time);
+        pauseTimer()
+        
+        timeIn.value = 0;
+    }
 };
 
 function startTimer() {
