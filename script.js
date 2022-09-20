@@ -54,6 +54,7 @@ function getTime() {
     storageTime = timeIn.value * 60;
 
     displayTimer(time);
+    pauseTimer()
     
     timeIn.value = 0;
 };
