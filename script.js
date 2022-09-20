@@ -73,7 +73,7 @@ function startTimer() {
 }
 
 function pauseTimer() {
-    startTimer = false;
+    startedTimer = false;
     clearInterval(timer)
     displayTimer(time)
 }
