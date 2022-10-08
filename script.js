@@ -117,6 +117,11 @@ window.onload = () => {
     resetBtn.onclick = reset;
     volumeIn.oninput = updateVolume;
     audioIn.oninput = updateAudio;
+    timeIn.addEventListener('keydown', (e) => {
+        if( e.code == 'NumpadEnter') {
+            getTime()
+        }
+    })
 
     displayTimer(time);
     displayVolume();
